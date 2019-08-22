@@ -1,12 +1,6 @@
 import { Component, Fragment } from "inferno";
 import { connect } from "inferno-redux";
-import {
-  addTodo,
-  getTodos,
-  getTodo,
-  deleteTodo,
-  editData
-} from "../actions/todoActions";
+import { addTodo, getTodos, getTodo } from "../actions/todoActions";
 import IndividualTodo from "./IndividualTodo";
 
 class Todo extends Component {
@@ -43,7 +37,7 @@ class Todo extends Component {
   };
 
   render() {
-    const { todos, todo } = this.props.todo;
+    const { todos } = this.props.todo;
     const { todoName } = this.state;
 
     return (

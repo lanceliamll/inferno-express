@@ -1,17 +1,19 @@
 import { connect } from "inferno-redux";
-import {
-  addTodo,
-  getTodo,
-  editTodo,
-  getTodos,
-  deleteTodo
-} from "../actions/todoActions";
+import { getTodos, deleteTodo } from "../actions/todoActions";
+import { Button } from "inferno-bootstrap";
 
-const IndividualTodo = ({ todos, deleteTodo }) => (
+const IndividualTodo = ({ todos, deleteTodo, getTodos }) => (
   <div>
     <ul>
       <li> {todos.todoName} </li>
-      <button onClick={() => deleteTodo(todos._id)}>Delete</button>
+      <Button
+        onClick={async () => {
+          await deleteTodo(todos._id);
+          await getTodos();
+        }}
+      >
+        Delete
+      </Button>
     </ul>
   </div>
 );
@@ -22,5 +24,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { editTodo, getTodos, deleteTodo }
+  { getTodos, deleteTodo }
 )(IndividualTodo);

@@ -1,12 +1,6 @@
 import axios from "axios";
 
-import {
-  ADD_TODO_ERROR,
-  GET_TODOS,
-  GET_TODO_ERROR,
-  ADD_TODO,
-  GET_TODO
-} from "./types";
+import { ADD_TODO_ERROR, GET_TODOS, GET_TODO_ERROR, GET_TODO } from "./types";
 
 export const addTodo = todoData => async dispatchEvent => {
   try {
@@ -48,15 +42,15 @@ export const getTodos = () => async dispatchEvent => {
   }
 };
 
-export const editTodo = (id, todoData) => async dispatchEvent => {
-  try {
-    await axios.put(`http://localhost:5000/api/todos/edit/${id}`, todoData);
-  } catch (error) {
-    dispatchEvent({
-      type: GET_TODO_ERROR
-    });
-  }
-};
+// export const editTodo = (id, todoData) => async dispatchEvent => {
+//   try {
+//     await axios.put(`http://localhost:5000/api/todos/edit/${id}`, todoData);
+//   } catch (error) {
+//     dispatchEvent({
+//       type: GET_TODO_ERROR
+//     });
+//   }
+// };
 
 export const deleteTodo = id => async dispatchEvent => {
   try {
